@@ -1,0 +1,45 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class CalculatorProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num1 = 0, num2 = 0;
+
+        // Get valid input for the first number
+        while (true) {
+            try {
+                System.out.print("Enter the first number: ");
+                num1 = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error - Invalid number format. Please enter a valid number.");
+            }
+        }
+
+        // Get valid input for the second number
+        while (true) {
+            try {
+                System.out.print("Enter the second number: ");
+                num2 = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Error - Invalid number format. Please enter a valid number.");
+            }
+        }
+
+        // Perform arithmetic operations
+        System.out.println("Addition: " + num1 + " + " + num2 + " = " + (num1 + num2));
+        System.out.println("Subtraction: " + num1 + " - " + num2 + " = " + (num1 - num2));
+        System.out.println("Multiplication: " + num1 + " * " + num2 + " = " + (num1 * num2));
+
+        // Handle division
+        try {
+            System.out.println("Division: " + num1 + " / " + num2 + " = " + (num1 / num2));
+        } catch (ArithmeticException e) {
+            System.out.println("Error - Division by zero is not allowed.");
+        }
+
+        scanner.close();
+    }
+}
